@@ -9,7 +9,7 @@ import { LoggerFactory } from './logger/logger_factory';
 // Function to start the Nest.js application
 async function start() {
   try {
-    const PORT = process.env.PORT || 3030; // Default port to 3000 if PORT environment variable is not set
+    const PORT = process.env.API_PORT || 3030; // Default port to 3000 if PORT environment variable is not set
 
     // Create an instance of Nest application
     const app = await NestFactory.create(AppModule, {

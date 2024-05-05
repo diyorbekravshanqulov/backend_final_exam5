@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SequelizeModule } from '@nestjs/sequelize';
-import { Admin } from './admin/model/admin.model';
 import { MailModule } from './mail/mail.module';
 import { AdminModule } from './admin/admin.module';
 import { MovieActorModule } from './movie-actor/movie-actor.module';
@@ -14,27 +13,29 @@ import { LanguageModule } from './language/language.module';
 import { UserModule } from './user/user.module';
 import { SubscriptionModule } from './subscription/subscription.module';
 import { RatingModule } from './rating/rating.module';
-import { Actor } from './actor/model/actor.entity';
-import { ActorAward } from './actor-award/model/actor-award.entity';
 import { FileModule } from './file/file.module';
+import { config } from 'process';
 
 @Module({
   imports: [
     // Importing configuration module to load environment variables
     ConfigModule.forRoot({ envFilePath: '.env', isGlobal: true }),
-
     // Setting up Sequelize for database operations
-    SequelizeModule.forRoot({
-      dialect: 'postgres', // Using PostgreSQL d ialect
-      host: process.env.POSTGRES_HOST, // Getting host from environment variables
-      port: Number(process.env.POSTGRES_PORT), // Getting port from environment variables
-      username: process.env.POSTGRES_USER, // Getting username from environment variables
-      password: process.env.POSTGRES_PASSWORD, // Getting password from environment variables
-      database: process.env.POSTGRES_DB, // Getting database name from environment variables
-      models: [__dirname + 'dist/**/*.model{.ts, .js}'], // Associating Sequelize models with the database
-      autoLoadModels: true, // Automatically loading models from the specified paths
-      sync: { alter: true }, // Synchronizing database schema with model definitions (altering tables)
-      logging: true, // Enabling logging for database operations
+    SequelizeModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (config: ConfigService) => ({
+        dialect: config.get<'postgres'>('TYPEORM_CONNECTION'),
+        host: config.get<string>('TYPEORM_HOST'),
+        username: config.get<string>('TYPEORM_USERNAME'),
+        password: config.get<string>('TYPEORM_PASSWORD'),
+        port: config.get<number>('TYPEORM_PORT'),
+        database: config.get<string>('TYPEORM_DATABASE'),
+        models: [__dirname + 'dist/**/*.model{.ts, .js}'], // Associating Sequelize models with the database
+        autoLoadModels: true, // Automatically loading models from the specified paths
+        sync: { alter: true }, // Synchronizing database schema with model definitions (altering tables)
+        logging: true, // Enabling logging for database operations
+      }),
     }),
     MailModule,
     AdminModule,
