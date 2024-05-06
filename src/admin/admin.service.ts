@@ -12,14 +12,13 @@ import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import { v4 } from 'uuid';
 import { LoginAdminDto } from './dto/login_admin.dto';
-import { AdminMailService } from '../mail/Adminmail.service';
 
 @Injectable()
 export class AdminService {
   constructor(
     @InjectModel(Admin) private adminRepo: typeof Admin,
     private readonly jwtService: JwtService,
-    private readonly mailService: AdminMailService, // Injecting the JwtService for token generation
+    private readonly mailService: AdminMailServi, // Injecting the JwtService for token generation
   ) {}
 
   // Method to generate access and refresh tokens for a given admin

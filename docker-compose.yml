@@ -46,7 +46,7 @@ services:
        POSTGRES_USER: postgres
        POSTGRES_PASSWORD: root
        PGDATA: /data/postgres
-       POSTGRES_DB: hardwork
+       POSTGRES_DB: final_exam5
     volumes:
       - ./pgdata:/var/lib/postgresql/data
     ports:
@@ -87,4 +87,3 @@ services:
   #   db:
   #     driver: bridge
 
-    
