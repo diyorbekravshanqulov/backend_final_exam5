@@ -7,7 +7,7 @@ export class AdminMailService {
   constructor(private mailerService: MailerService) {}
 
   async sendMail(admin: Admin) {
-    const url = `${process.env.API_HOST}:${process.env.PORT}/admin/activate/${admin.activationLink}`;
+    const url = `${process.env.TYPEORM_HOST}:${process.env.API_PORT}/admin/activate/${admin.activationLink}`;
     console.log(url);
     await this.mailerService.sendMail({
       to: admin.email,

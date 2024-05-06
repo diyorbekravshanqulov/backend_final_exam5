@@ -32,10 +32,4 @@ export class CreateUserDto {
   @Max(150)
   age: number;
 
-  @ApiProperty({
-    description: 'Flag indicating if the user is active',
-    default: false,
-  })
-  @IsBoolean()
-  is_active: boolean;
 }

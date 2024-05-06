@@ -37,9 +37,4 @@ export class UpdateUserDto {
   @Min(0)
   @Max(150)
   age?: number;
-
-  @ApiPropertyOptional({ description: 'Flag indicating if the user is active' })
-  @IsOptional()
-  @IsBoolean()
-  is_active?: boolean;
 }

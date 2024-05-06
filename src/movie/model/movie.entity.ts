@@ -1,5 +1,7 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
+import { Language } from 'src/language/model/language.entity';
+import { MovieType } from 'src/movie-type/model/movie-type.entity';
 
 interface IMovieCreationAttr {
   photo: string;
@@ -54,6 +56,7 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
   })
   release_date: Date;
 
+  @ForeignKey(() => Language)
   @ApiProperty({
     description: 'ID of the language of the movie',
     example: 1,
@@ -90,6 +93,8 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
   })
   video: string;
 
+
+  @ForeignKey(() => MovieType)
   @ApiProperty({
     description: 'ID of the movie type',
     example: 1,
@@ -107,4 +112,10 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
     type: DataType.INTEGER,
   })
   ratingOfNumber: number;
+
+  @BelongsTo(() => Language)
+  lang: Language
+
+  @BelongsTo(() => MovieType)
+  movieTypes: MovieType
 }

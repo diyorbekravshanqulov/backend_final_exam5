@@ -8,6 +8,7 @@ import {
   Table,
 } from 'sequelize-typescript';
 import { Actor } from '../../actor/model/actor.entity';
+import { Award } from 'src/award/model/award.entity';
 
 interface IActorAwardCreationAttr {
   actor_id: number;
@@ -29,6 +30,7 @@ export class ActorAward extends Model<ActorAward, IActorAwardCreationAttr> {
   })
   actor_id: number;
 
+  @ForeignKey(() => Award)
   @ApiProperty({
     description: 'ID of the award received by the actor',
     type: Number,
@@ -50,6 +52,9 @@ export class ActorAward extends Model<ActorAward, IActorAwardCreationAttr> {
     allowNull: false,
   })
   award_year: number;
+
+  @BelongsTo(() => Award)
+  awards: Award
 
   @BelongsTo(() => Actor)
   actors: Actor;

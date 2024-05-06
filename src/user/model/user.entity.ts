@@ -7,7 +7,6 @@ interface IUserCreationAttr {
   email: string;
   phone: string;
   age: number;
-  is_active: boolean;
 }
 
 @Table({ tableName: 'user' })
@@ -52,20 +51,4 @@ export class User extends Model<User, IUserCreationAttr> {
     type: DataType.INTEGER,
   })
   age: number;
-
-  @ApiProperty({
-    description: 'Flag indicating if the user is active',
-    default: false,
-  })
-  @Column({
-    type: DataType.BOOLEAN,
-    defaultValue: false,
-  })
-  is_active: boolean;
-
-  @ApiProperty({ description: 'Hashed refresh token of the user' })
-  @Column({
-    type: DataType.STRING,
-  })
-  hashedRefreshToken: string;
 }

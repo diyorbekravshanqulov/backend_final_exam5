@@ -40,7 +40,7 @@ version: '3.8'
 
 services:
   db:
-    container_name: postgres
+    container_name: backend_exam
     image: postgres
     environment:
        POSTGRES_USER: postgres
@@ -60,9 +60,10 @@ services:
       timeout: 10s
       retries: 5
   app:
-    container_name: crm_nest_graphql
-    # build: .
-    image: dyrbkrvshqlv/hardwork-app
+    container_name: backend_finall_exam
+    build: 
+      context: ./
+    # image: dyrbkrvshqlv/
     depends_on:
       - db
     restart: unless-stopped

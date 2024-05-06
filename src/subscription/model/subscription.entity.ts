@@ -1,5 +1,7 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
+import { Movie } from 'src/movie/model/movie.entity';
+import { User } from 'src/user/model/user.entity';
 
 interface ISubscriptionCreationAttr {
   movie_id: number;
@@ -22,6 +24,7 @@ export class Subscription extends Model<
   })
   id: number;
 
+  @ForeignKey(() => Movie)
   @ApiProperty({
     description: 'The ID of the movie subscribed to',
     example: 1,
@@ -31,6 +34,7 @@ export class Subscription extends Model<
   })
   movie_id: number;
 
+  @ForeignKey(() => User)
   @ApiProperty({
     description: 'The ID of the user who subscribed',
     example: 1,
@@ -39,4 +43,10 @@ export class Subscription extends Model<
     type: DataType.INTEGER,
   })
   user_id: number;
+
+  @BelongsTo(() => Movie)
+  movies: Movie
+
+  @BelongsTo(() => User)
+  users: User
 }

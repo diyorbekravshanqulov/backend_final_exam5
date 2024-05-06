@@ -1,5 +1,7 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
+import { Movie } from 'src/movie/model/movie.entity';
+import { Actor } from 'src/actor/model/actor.entity';
 
 interface IMovieActorCreationAttr {
   movie_id: number;
@@ -19,6 +21,7 @@ export class MovieActor extends Model<MovieActor, IMovieActorCreationAttr> {
   })
   id: number;
 
+  @ForeignKey(() => Movie)
   @ApiProperty({
     description: 'The ID of the movie',
     example: 1,
@@ -28,6 +31,7 @@ export class MovieActor extends Model<MovieActor, IMovieActorCreationAttr> {
   })
   movie_id: number;
 
+  @ForeignKey(() => Actor)
   @ApiProperty({
     description: 'The ID of the actor',
     example: 1,
@@ -36,4 +40,10 @@ export class MovieActor extends Model<MovieActor, IMovieActorCreationAttr> {
     type: DataType.INTEGER,
   })
   actor_id: number;
+
+  @BelongsTo(() => Movie)
+  movies: Movie
+
+  @BelongsTo(() => Movie)
+  actors: Actor
 }
