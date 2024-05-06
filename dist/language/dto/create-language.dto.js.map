@@ -1,0 +1,1 @@
+{"version":3,"file":"create-language.dto.js","sourceRoot":"","sources":["../../../src/language/dto/create-language.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAmD;AACnD,6CAA8C;AAE9C,MAAa,iBAAiB;CAQ7B;AARD,8CAQC;AADC;IANC,IAAA,qBAAW,EAAC;QACX,WAAW,EAAE,mBAAmB;QAChC,OAAO,EAAE,SAAS;KACnB,CAAC;IACD,IAAA,0BAAQ,GAAE;IACV,IAAA,wBAAM,EAAC,CAAC,EAAE,GAAG,CAAC;;mDACE"}

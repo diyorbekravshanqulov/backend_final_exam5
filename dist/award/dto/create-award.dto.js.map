@@ -1,0 +1,1 @@
+{"version":3,"file":"create-award.dto.js","sourceRoot":"","sources":["../../../src/award/dto/create-award.dto.ts"],"names":[],"mappings":";;;;;;;;;;;;AAAA,qDAAmD;AACnD,6CAA8C;AAE9C,MAAa,cAAc;CAQ1B;AARD,wCAQC;AADC;IANC,IAAA,qBAAW,EAAC;QACX,WAAW,EAAE,mBAAmB;QAChC,OAAO,EAAE,uBAAuB;KACjC,CAAC;IACD,IAAA,0BAAQ,GAAE;IACV,IAAA,wBAAM,EAAC,CAAC,EAAE,GAAG,CAAC;;kDACI"}
