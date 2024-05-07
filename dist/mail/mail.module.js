@@ -12,7 +12,7 @@ const mailer_1 = require("@nestjs-modules/mailer");
 const config_1 = require("@nestjs/config");
 const path_1 = require("path");
 const handlebars_adapter_1 = require("@nestjs-modules/mailer/dist/adapters/handlebars.adapter");
-const Adminmail_service_1 = require("./Adminmail.service");
+const AdminMail_service_1 = require("./AdminMail.service");
 let MailModule = class MailModule {
 };
 exports.MailModule = MailModule;
@@ -46,8 +46,8 @@ exports.MailModule = MailModule = __decorate([
                 inject: [config_1.ConfigService],
             }),
         ],
-        providers: [Adminmail_service_1.AdminMailService],
-        exports: [Adminmail_service_1.AdminMailService],
+        providers: [AdminMail_service_1.AdminMailService],
+        exports: [AdminMail_service_1.AdminMailService],
     })
 ], MailModule);
 //# sourceMappingURL=mail.module.js.map

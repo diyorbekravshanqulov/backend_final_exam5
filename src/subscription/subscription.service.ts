@@ -3,6 +3,7 @@ import { CreateSubscriptionDto } from './dto/create-subscription.dto';
 import { UpdateSubscriptionDto } from './dto/update-subscription.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Subscription } from './model/subscription.entity';
+import { User } from 'src/user/model/user.entity';
 
 @Injectable()
 export class SubscriptionService {

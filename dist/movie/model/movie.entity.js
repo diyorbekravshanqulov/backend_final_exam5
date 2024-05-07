@@ -13,7 +13,6 @@ exports.Movie = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const swagger_1 = require("@nestjs/swagger");
 const language_entity_1 = require("../../language/model/language.entity");
-const movie_type_entity_1 = require("../../movie-type/model/movie-type.entity");
 let Movie = class Movie extends sequelize_typescript_1.Model {
 };
 exports.Movie = Movie;
@@ -55,10 +54,9 @@ __decorate([
         example: '2023-05-25',
     }),
     (0, sequelize_typescript_1.Column)({
-        type: sequelize_typescript_1.DataType.DATE,
-        defaultValue: Date.now(),
+        type: sequelize_typescript_1.DataType.STRING,
     }),
-    __metadata("design:type", Date)
+    __metadata("design:type", String)
 ], Movie.prototype, "release_date", void 0);
 __decorate([
     (0, sequelize_typescript_1.ForeignKey)(() => language_entity_1.Language),
@@ -102,7 +100,6 @@ __decorate([
     __metadata("design:type", String)
 ], Movie.prototype, "video", void 0);
 __decorate([
-    (0, sequelize_typescript_1.ForeignKey)(() => movie_type_entity_1.MovieType),
     (0, swagger_1.ApiProperty)({
         description: 'ID of the movie type',
         example: 1,
@@ -126,10 +123,6 @@ __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => language_entity_1.Language),
     __metadata("design:type", language_entity_1.Language)
 ], Movie.prototype, "lang", void 0);
-__decorate([
-    (0, sequelize_typescript_1.BelongsTo)(() => movie_type_entity_1.MovieType),
-    __metadata("design:type", movie_type_entity_1.MovieType)
-], Movie.prototype, "movieTypes", void 0);
 exports.Movie = Movie = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'movie' })
 ], Movie);

@@ -4,4 +4,5 @@ export declare class CreateUserDto {
     email: string;
     phone: string;
     age: number;
+    subscription: boolean;
 }

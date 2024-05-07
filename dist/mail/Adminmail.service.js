@@ -17,7 +17,7 @@ let AdminMailService = class AdminMailService {
         this.mailerService = mailerService;
     }
     async sendMail(admin) {
-        const url = `${process.env.TYPEORM_HOST}:${process.env.API_PORT}/admin/activate/${admin.activationLink}`;
+        const url = `${process.env.API_HOST}:${process.env.API_PORT}/admin/activate/${admin.activationLink}`;
         console.log(url);
         await this.mailerService.sendMail({
             to: admin.email,
@@ -35,4 +35,4 @@ exports.AdminMailService = AdminMailService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [mailer_1.MailerService])
 ], AdminMailService);
-//# sourceMappingURL=Adminmail.service.js.map
+//# sourceMappingURL=AdminMail.service.js.map

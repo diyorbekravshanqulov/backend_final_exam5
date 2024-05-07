@@ -6,6 +6,7 @@ interface IActorCreationAttr {
 }
 export declare class Actor extends Model<Actor, IActorCreationAttr> {
     id: number;
+    full_name: string;
     age: number;
     character: string;
 }

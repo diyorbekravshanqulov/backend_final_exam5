@@ -17,8 +17,8 @@ export class CreateMovieDto {
     description: 'Release date of the movie',
     example: '2023-05-25',
   })
-  @IsDate()
-  release_date: Date;
+  @IsString()
+  release_date: string;
 
   @ApiProperty({ description: 'ID of the language of the movie', example: 1 })
   @IsInt()

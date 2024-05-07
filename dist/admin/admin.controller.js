@@ -21,6 +21,7 @@ const swagger_1 = require("@nestjs/swagger");
 const admin_model_1 = require("./model/admin.model");
 const cookieGetter_decorator_1 = require("../decorators/cookieGetter.decorator");
 const login_admin_dto_1 = require("./dto/login_admin.dto");
+const jwt_auth_guard_1 = require("../guards/jwt-auth.guard");
 let AdminController = class AdminController {
     constructor(adminService) {
         this.adminService = adminService;
@@ -115,6 +116,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "activate", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiOperation)({ summary: 'Get all admins' }),
     (0, common_1.Get)(),
     __metadata("design:type", Function),
@@ -122,6 +124,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "findAll", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiOperation)({ summary: 'Get an admin by ID' }),
     (0, common_1.Get)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -130,6 +133,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "findOne", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiOperation)({ summary: 'Update an admin by ID' }),
     (0, common_1.Patch)(':id'),
     __param(0, (0, common_1.Param)('id')),
@@ -139,6 +143,7 @@ __decorate([
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "update", null);
 __decorate([
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
     (0, swagger_1.ApiOperation)({ summary: 'Delete an admin by ID' }),
     (0, common_1.Delete)(':id'),
     __param(0, (0, common_1.Param)('id')),

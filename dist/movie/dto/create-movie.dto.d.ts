@@ -1,7 +1,7 @@
 export declare class CreateMovieDto {
     photo: string;
     title: string;
-    release_date: Date;
+    release_date: string;
     Language_id: number;
     age_limit: number;
     duration: number;

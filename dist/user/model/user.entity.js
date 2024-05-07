@@ -62,6 +62,13 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], User.prototype, "age", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ description: 'User subscription' }),
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.BOOLEAN,
+    }),
+    __metadata("design:type", Boolean)
+], User.prototype, "subscription", void 0);
 exports.User = User = __decorate([
     (0, sequelize_typescript_1.Table)({ tableName: 'user' })
 ], User);

@@ -3,7 +3,7 @@ import { Column, DataType, Model, Table } from 'sequelize-typescript';
 
 interface AdminCreationAttr {
   fullName: string;
-  username: string;
+  username: string; 
   hashedPassword: string;
   email: string;
   tgLink: string;

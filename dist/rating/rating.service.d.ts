@@ -1,9 +1,12 @@
 import { CreateRatingDto } from './dto/create-rating.dto';
 import { UpdateRatingDto } from './dto/update-rating.dto';
+import { Rating } from './model/rating.entity';
 export declare class RatingService {
-    create(createRatingDto: CreateRatingDto): string;
-    findAll(): string;
-    findOne(id: number): string;
-    update(id: number, updateRatingDto: UpdateRatingDto): string;
-    remove(id: number): string;
+    private ratingModel;
+    constructor(ratingModel: typeof Rating);
+    create(createRatingDto: CreateRatingDto): Promise<Rating>;
+    findAll(): Promise<Rating[]>;
+    findOne(id: number): Promise<Rating>;
+    update(id: number, updateRatingDto: UpdateRatingDto): Promise<Rating>;
+    remove(id: number): Promise<"Not found" | "Successfully removed">;
 }

@@ -12,7 +12,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Rating = void 0;
 const sequelize_typescript_1 = require("sequelize-typescript");
 const swagger_1 = require("@nestjs/swagger");
-const movie_entity_1 = require("../../movie/model/movie.entity");
 const user_entity_1 = require("../../user/model/user.entity");
 let Rating = class Rating extends sequelize_typescript_1.Model {
 };
@@ -30,7 +29,6 @@ __decorate([
     __metadata("design:type", Number)
 ], Rating.prototype, "id", void 0);
 __decorate([
-    (0, sequelize_typescript_1.ForeignKey)(() => movie_entity_1.Movie),
     (0, swagger_1.ApiProperty)({
         description: 'The ID of the movie being rated',
         example: 1,
@@ -51,10 +49,6 @@ __decorate([
     }),
     __metadata("design:type", Number)
 ], Rating.prototype, "user_id", void 0);
-__decorate([
-    (0, sequelize_typescript_1.BelongsTo)(() => movie_entity_1.Movie),
-    __metadata("design:type", movie_entity_1.Movie)
-], Rating.prototype, "movies", void 0);
 __decorate([
     (0, sequelize_typescript_1.BelongsTo)(() => user_entity_1.User),
     __metadata("design:type", user_entity_1.User)

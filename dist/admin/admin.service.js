@@ -19,7 +19,7 @@ const admin_model_1 = require("./model/admin.model");
 const jwt_1 = require("@nestjs/jwt");
 const bcrypt = require("bcrypt");
 const uuid_1 = require("uuid");
-const Adminmail_service_1 = require("../mail/Adminmail.service");
+const AdminMail_service_1 = require("../mail/AdminMail.service");
 let AdminService = class AdminService {
     constructor(adminRepo, jwtService, mailService) {
         this.adminRepo = adminRepo;
@@ -239,6 +239,6 @@ exports.AdminService = AdminService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, sequelize_1.InjectModel)(admin_model_1.Admin)),
     __metadata("design:paramtypes", [Object, jwt_1.JwtService,
-        Adminmail_service_1.AdminMailService])
+        AdminMail_service_1.AdminMailService])
 ], AdminService);
 //# sourceMappingURL=admin.service.js.map

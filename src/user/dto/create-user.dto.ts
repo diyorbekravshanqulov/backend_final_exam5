@@ -32,4 +32,6 @@ export class CreateUserDto {
   @Max(150)
   age: number;
 
+  @IsBoolean()
+  subscription: boolean
 }

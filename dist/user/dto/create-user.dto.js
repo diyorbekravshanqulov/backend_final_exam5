@@ -42,4 +42,8 @@ __decorate([
     (0, class_validator_1.Max)(150),
     __metadata("design:type", Number)
 ], CreateUserDto.prototype, "age", void 0);
+__decorate([
+    (0, class_validator_1.IsBoolean)(),
+    __metadata("design:type", Boolean)
+], CreateUserDto.prototype, "subscription", void 0);
 //# sourceMappingURL=create-user.dto.js.map

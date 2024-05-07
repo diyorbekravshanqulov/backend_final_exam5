@@ -6,7 +6,7 @@ import { Movie } from './model/movie.entity';
 import { FileModule } from '../file/file.module';
 
 @Module({
-  imports: [SequelizeModule.forFeature([Movie]), FileModule],
+  imports: [SequelizeModule.forFeature([Movie])],
   controllers: [MovieController],
   providers: [MovieService],
 })

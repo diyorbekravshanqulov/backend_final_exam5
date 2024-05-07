@@ -28,8 +28,8 @@ export class UpdateMovieDto {
     example: '2023-05-25',
   })
   @IsOptional()
-  @IsDate()
-  release_date?: Date;
+  @IsString()
+  release_date?: string;
 
   @ApiPropertyOptional({
     description: 'ID of the language of the movie',

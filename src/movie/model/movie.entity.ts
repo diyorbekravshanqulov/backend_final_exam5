@@ -6,7 +6,7 @@ import { MovieType } from 'src/movie-type/model/movie-type.entity';
 interface IMovieCreationAttr {
   photo: string;
   title: string;
-  release_date: Date;
+  release_date: string;
   Language_id: number;
   age_limit: number;
   duration: number;
@@ -51,10 +51,9 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
     example: '2023-05-25',
   })
   @Column({
-    type: DataType.DATE,
-    defaultValue: Date.now(),
+    type: DataType.STRING,
   })
-  release_date: Date;
+  release_date: string;
 
   @ForeignKey(() => Language)
   @ApiProperty({
@@ -94,7 +93,7 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
   video: string;
 
 
-  @ForeignKey(() => MovieType)
+  // @ForeignKey(() => MovieType)
   @ApiProperty({
     description: 'ID of the movie type',
     example: 1,
@@ -116,6 +115,6 @@ export class Movie extends Model<Movie, IMovieCreationAttr> {
   @BelongsTo(() => Language)
   lang: Language
 
-  @BelongsTo(() => MovieType)
-  movieTypes: MovieType
+  // @BelongsTo(() => MovieType)
+  // movieTypes: MovieType
 }

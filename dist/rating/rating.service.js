@@ -5,28 +5,45 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RatingService = void 0;
 const common_1 = require("@nestjs/common");
+const sequelize_1 = require("@nestjs/sequelize");
+const rating_entity_1 = require("./model/rating.entity");
 let RatingService = class RatingService {
-    create(createRatingDto) {
-        return 'This action adds a new rating';
+    constructor(ratingModel) {
+        this.ratingModel = ratingModel;
     }
-    findAll() {
-        return `This action returns all rating`;
+    async create(createRatingDto) {
+        return this.ratingModel.create(createRatingDto);
     }
-    findOne(id) {
-        return `This action returns a #${id} rating`;
+    async findAll() {
+        return this.ratingModel.findAll({ include: { all: true } });
     }
-    update(id, updateRatingDto) {
-        return `This action updates a #${id} rating`;
+    async findOne(id) {
+        return this.ratingModel.findByPk(id);
     }
-    remove(id) {
-        return `This action removes a #${id} rating`;
+    async update(id, updateRatingDto) {
+        const rating = await this.ratingModel.update(updateRatingDto, { where: { id }, returning: true });
+        return rating[1][0];
+    }
+    async remove(id) {
+        const ratingRows = await this.ratingModel.destroy({ where: { id } });
+        if (ratingRows == 0)
+            return "Not found";
+        return "Successfully removed";
     }
 };
 exports.RatingService = RatingService;
 exports.RatingService = RatingService = __decorate([
-    (0, common_1.Injectable)()
+    (0, common_1.Injectable)(),
+    __param(0, (0, sequelize_1.InjectModel)(rating_entity_1.Rating)),
+    __metadata("design:paramtypes", [Object])
 ], RatingService);
 //# sourceMappingURL=rating.service.js.map

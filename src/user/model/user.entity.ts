@@ -7,6 +7,7 @@ interface IUserCreationAttr {
   email: string;
   phone: string;
   age: number;
+  subscription: boolean
 }
 
 @Table({ tableName: 'user' })
@@ -51,4 +52,11 @@ export class User extends Model<User, IUserCreationAttr> {
     type: DataType.INTEGER,
   })
   age: number;
+
+  @ApiProperty({ description: 'User subscription' })
+  @Column({
+    type: DataType.BOOLEAN,
+  })
+  subscription: boolean
+
 }

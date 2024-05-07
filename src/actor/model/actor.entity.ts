@@ -20,6 +20,14 @@ export class Actor extends Model<Actor, IActorCreationAttr> {
   id: number;
 
   @ApiProperty({
+    description: 'fullname of the actor',
+  })
+  @Column({
+    type: DataType.STRING,
+  })
+  full_name: string;
+
+  @ApiProperty({
     description: 'Age of the actor',
   })
   @Column({

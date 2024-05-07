@@ -18,6 +18,7 @@ import { Response } from 'express';
 import { Admin } from './model/admin.model';
 import { CookieGetter } from '../decorators/cookieGetter.decorator';
 import { LoginAdminDto } from './dto/login_admin.dto';
+import { JwtAuthGuard } from 'src/guards/jwt-auth.guard';
 
 @ApiTags('admin')
 @Controller('admin')
@@ -77,18 +78,21 @@ export class AdminController {
     return this.adminService.activate(link);
   }
 
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get all admins' })
   @Get()
   async findAll() {
     return this.adminService.findAll();
   }
 
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Get an admin by ID' })
   @Get(':id')
   async findOne(@Param('id') id: string) {
     return this.adminService.findOne(+id);
   }
 
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Update an admin by ID' })
   @Patch(':id')
   async update(
@@ -98,6 +102,7 @@ export class AdminController {
     return this.adminService.update(+id, updateAdminDto);
   }
 
+  @UseGuards(JwtAuthGuard)
   @ApiOperation({ summary: 'Delete an admin by ID' })
   @Delete(':id')
   async remove(@Param('id') id: string) {

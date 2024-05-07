@@ -9,19 +9,10 @@ import { FileService } from '../file/file.service';
 export class MovieService {
   constructor(
     @InjectModel(Movie) private movieModel: typeof Movie,
-    private readonly fileService: FileService,
   ) {}
 
-  async create(createMovieDto: CreateMovieDto, photo: any) {
-    console.log(photo);
-
-    const fileName = await this.fileService.saveFile(photo);
-    const movie = this.movieModel.create({
-      ...createMovieDto,
-      photo: fileName,
-    });
-
-    return movie;
+  async create(createMovieDto: CreateMovieDto) {
+    return this.movieModel.create(createMovieDto)
   }
 
   async findAll() {

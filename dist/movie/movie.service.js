@@ -16,20 +16,12 @@ exports.MovieService = void 0;
 const common_1 = require("@nestjs/common");
 const sequelize_1 = require("@nestjs/sequelize");
 const movie_entity_1 = require("./model/movie.entity");
-const file_service_1 = require("../file/file.service");
 let MovieService = class MovieService {
-    constructor(movieModel, fileService) {
+    constructor(movieModel) {
         this.movieModel = movieModel;
-        this.fileService = fileService;
     }
-    async create(createMovieDto, photo) {
-        console.log(photo);
-        const fileName = await this.fileService.saveFile(photo);
-        const movie = this.movieModel.create({
-            ...createMovieDto,
-            photo: fileName,
-        });
-        return movie;
+    async create(createMovieDto) {
+        return this.movieModel.create(createMovieDto);
     }
     async findAll() {
         return this.movieModel.findAll({ include: { all: true } });
@@ -55,6 +47,6 @@ exports.MovieService = MovieService;
 exports.MovieService = MovieService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, sequelize_1.InjectModel)(movie_entity_1.Movie)),
-    __metadata("design:paramtypes", [Object, file_service_1.FileService])
+    __metadata("design:paramtypes", [Object])
 ], MovieService);
 //# sourceMappingURL=movie.service.js.map

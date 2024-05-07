@@ -1,8 +1,12 @@
 import { Column, DataType, Model, Table } from 'sequelize-typescript';
 import { ApiProperty } from '@nestjs/swagger';
 
+interface IAwardCrationAttr {
+  award_name: string;
+}
+
 @Table({ tableName: 'award' })
-export class Award extends Model<Award> {
+export class Award extends Model<Award, IAwardCrationAttr> {
   @ApiProperty({
     description: 'The unique identifier of the award',
     example: 1,

@@ -12,7 +12,7 @@ import { Response } from 'express';
 import * as bcrypt from 'bcrypt';
 import { v4 } from 'uuid';
 import { LoginAdminDto } from './dto/login_admin.dto';
-import { AdminMailService } from '../mail/Adminmail.service';
+import { AdminMailService } from '../mail/AdminMail.service';
 
 @Injectable()
 export class AdminService {

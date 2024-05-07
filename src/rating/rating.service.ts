@@ -1,26 +1,36 @@
 import { Injectable } from '@nestjs/common';
 import { CreateRatingDto } from './dto/create-rating.dto';
 import { UpdateRatingDto } from './dto/update-rating.dto';
+import { InjectModel } from '@nestjs/sequelize';
+import { Rating } from './model/rating.entity';
 
 @Injectable()
 export class RatingService {
-  create(createRatingDto: CreateRatingDto) {
-    return 'This action adds a new rating';
+
+  constructor(@InjectModel(Rating) private ratingModel: typeof Rating) {
+    
   }
 
-  findAll() {
-    return `This action returns all rating`;
+  async create(createRatingDto: CreateRatingDto) {
+    return this.ratingModel.create(createRatingDto)
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} rating`;
+ async findAll() {
+    return this.ratingModel.findAll({include: { all: true }})
   }
 
-  update(id: number, updateRatingDto: UpdateRatingDto) {
-    return `This action updates a #${id} rating`;
+ async findOne(id: number) {
+    return this.ratingModel.findByPk(id)
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} rating`;
+ async update(id: number, updateRatingDto: UpdateRatingDto) {
+    const rating = await this.ratingModel.update(updateRatingDto, { where: { id }, returning: true} )
+    return rating[1][0]
+  }
+
+ async remove(id: number) {
+    const ratingRows = await this.ratingModel.destroy({ where: {id } })
+    if(ratingRows==0) return "Not found"
+    return "Successfully removed"
   }
 }

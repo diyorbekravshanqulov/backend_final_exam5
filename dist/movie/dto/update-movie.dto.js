@@ -36,8 +36,8 @@ __decorate([
         example: '2023-05-25',
     }),
     (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", Date)
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
 ], UpdateMovieDto.prototype, "release_date", void 0);
 __decorate([
     (0, swagger_1.ApiPropertyOptional)({

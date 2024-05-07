@@ -23,9 +23,8 @@ export class MovieController {
   @Post()
   @ApiOperation({ summary: 'Create a new movie' })
   @ApiBody({ type: CreateMovieDto })
-  @UseInterceptors(FileInterceptor('photo'))
-  create(@Body() createMovieDto: CreateMovieDto, @UploadedFile() photo: any) {
-    return this.movieService.create(createMovieDto, photo);
+  create(@Body() createMovieDto: CreateMovieDto) {
+    return this.movieService.create(createMovieDto);
   }
 
   @Get()

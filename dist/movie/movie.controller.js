@@ -18,13 +18,12 @@ const movie_service_1 = require("./movie.service");
 const create_movie_dto_1 = require("./dto/create-movie.dto");
 const update_movie_dto_1 = require("./dto/update-movie.dto");
 const swagger_1 = require("@nestjs/swagger");
-const platform_express_1 = require("@nestjs/platform-express");
 let MovieController = class MovieController {
     constructor(movieService) {
         this.movieService = movieService;
     }
-    create(createMovieDto, photo) {
-        return this.movieService.create(createMovieDto, photo);
+    create(createMovieDto) {
+        return this.movieService.create(createMovieDto);
     }
     findAll() {
         return this.movieService.findAll();
@@ -44,11 +43,9 @@ __decorate([
     (0, common_1.Post)(),
     (0, swagger_1.ApiOperation)({ summary: 'Create a new movie' }),
     (0, swagger_1.ApiBody)({ type: create_movie_dto_1.CreateMovieDto }),
-    (0, common_1.UseInterceptors)((0, platform_express_1.FileInterceptor)('photo')),
     __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.UploadedFile)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_movie_dto_1.CreateMovieDto, Object]),
+    __metadata("design:paramtypes", [create_movie_dto_1.CreateMovieDto]),
     __metadata("design:returntype", void 0)
 ], MovieController.prototype, "create", null);
 __decorate([

@@ -33,8 +33,8 @@ __decorate([
         description: 'Release date of the movie',
         example: '2023-05-25',
     }),
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", Date)
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
 ], CreateMovieDto.prototype, "release_date", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ description: 'ID of the language of the movie', example: 1 }),

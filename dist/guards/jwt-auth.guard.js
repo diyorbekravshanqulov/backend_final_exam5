@@ -38,7 +38,7 @@ let JwtAuthGuard = class JwtAuthGuard {
         }
         catch (error) {
             throw new common_1.UnauthorizedException({
-                message: "Foydalanuvchi AAAAAAAAAAAAAAvtorizatsiyadan o'tmagan",
+                message: "Foydalanuvchi  Avtorizatsiyadan o'tmagan",
             });
         }
         req.user = user;

@@ -12,13 +12,12 @@ const movie_service_1 = require("./movie.service");
 const movie_controller_1 = require("./movie.controller");
 const sequelize_1 = require("@nestjs/sequelize");
 const movie_entity_1 = require("./model/movie.entity");
-const file_module_1 = require("../file/file.module");
 let MovieModule = class MovieModule {
 };
 exports.MovieModule = MovieModule;
 exports.MovieModule = MovieModule = __decorate([
     (0, common_1.Module)({
-        imports: [sequelize_1.SequelizeModule.forFeature([movie_entity_1.Movie]), file_module_1.FileModule],
+        imports: [sequelize_1.SequelizeModule.forFeature([movie_entity_1.Movie])],
         controllers: [movie_controller_1.MovieController],
         providers: [movie_service_1.MovieService],
     })

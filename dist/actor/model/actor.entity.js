@@ -28,6 +28,15 @@ __decorate([
 ], Actor.prototype, "id", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
+        description: 'fullname of the actor',
+    }),
+    (0, sequelize_typescript_1.Column)({
+        type: sequelize_typescript_1.DataType.STRING,
+    }),
+    __metadata("design:type", String)
+], Actor.prototype, "full_name", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
         description: 'Age of the actor',
     }),
     (0, sequelize_typescript_1.Column)({

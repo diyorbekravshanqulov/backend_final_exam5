@@ -21,7 +21,7 @@ export class Rating extends Model<Rating, IRatingCreationAttr> {
   })
   id: number;
 
-  @ForeignKey(() => Movie)
+  // @ForeignKey(() => Movie)
   @ApiProperty({
     description: 'The ID of the movie being rated',
     example: 1,
@@ -41,8 +41,8 @@ export class Rating extends Model<Rating, IRatingCreationAttr> {
   })
   user_id: number;
 
-  @BelongsTo(() => Movie)
-  movies: Movie
+  // @BelongsTo(() => Movie)
+  // movies: Movie
 
   @BelongsTo(() => User)
   users: User

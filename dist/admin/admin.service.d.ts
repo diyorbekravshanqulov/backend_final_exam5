@@ -4,7 +4,7 @@ import { Admin } from './model/admin.model';
 import { JwtService } from '@nestjs/jwt';
 import { Response } from 'express';
 import { LoginAdminDto } from './dto/login_admin.dto';
-import { AdminMailService } from '../mail/Adminmail.service';
+import { AdminMailService } from '../mail/AdminMail.service';
 export declare class AdminService {
     private adminRepo;
     private readonly jwtService;

@@ -5,6 +5,7 @@ interface IUserCreationAttr {
     email: string;
     phone: string;
     age: number;
+    subscription: boolean;
 }
 export declare class User extends Model<User, IUserCreationAttr> {
     id: number;
@@ -13,5 +14,6 @@ export declare class User extends Model<User, IUserCreationAttr> {
     email: string;
     phone: string;
     age: number;
+    subscription: boolean;
 }
 export {};

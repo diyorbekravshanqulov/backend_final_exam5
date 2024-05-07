@@ -36,7 +36,7 @@ export class JwtAuthGuard implements CanActivate {
         
     } catch (error) {
         throw new UnauthorizedException({
-          message: "Foydalanuvchi AAAAAAAAAAAAAAvtorizatsiyadan o'tmagan",
+          message: "Foydalanuvchi  Avtorizatsiyadan o'tmagan",
         });
     }
     
